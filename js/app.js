@@ -11,6 +11,7 @@ const allData = () =>{
     }else{
         document.getElementById('validation').classList.remove('d-none');
         document.getElementById('load-all-data').textContent = '';
+        document.getElementById('details-container').textContent = '';
     }
 }
 
@@ -48,12 +49,6 @@ const details = (slug) =>{
     .then(data => viewDetails(data.data))
 }
 
-function sen(detk){
-    for(const sensor of detk){
-        console.log(sensor);
-        return sensor;
-    }
-}
 const viewDetails = details =>{
     const detailsContainer = document.getElementById('details-container');
     detailsContainer.textContent = '';
