@@ -1,6 +1,8 @@
 const allData = () =>{
     const searchText = document.getElementById('search-field').value;
     if (searchText.length > 0) {
+        //loading start
+        document.getElementById('spinner').classList.remove('d-none');
         //remove validation text
         document.getElementById('validation').classList.add('d-none');
         fetch(`https://openapi.programming-hero.com/api/phones?search=${searchText}`)
@@ -20,6 +22,8 @@ const displayData = phones =>{
     phoneContainer.textContent = '';
     const detailsContainer = document.getElementById('details-container');
     detailsContainer.textContent = '';
+    //loading stop
+    document.getElementById('spinner').classList.add('d-none');
     if (phones.length > 0) {
         const myPhone = phones.slice(0,20)
         for (const phone of myPhone) {
@@ -64,11 +68,10 @@ const viewDetails = details =>{
             <div class="col col-md-5">
                 <h5>Main Features</h5>
                 <p><span>Storage :</span> ${details.mainFeatures.storage} </p>
-                <p><span>Storage :</span> ${details.slug} </p>
                 <p><span>Ram :</span> ${details.mainFeatures.memory} </p>
                 <p><span>Display :</span> ${details.mainFeatures.displaySize} </p>
                 <p><span>Chip-Set :</span> ${details.mainFeatures.chipSet} </p>
-                <p><span>Sensor :</span> ${details.mainFeatures.sensors} </p>
+                <p class="text-truncate"><span>Sensor :</span> ${details.mainFeatures.sensors} </p>
             </div>
             <div class="col col-md-4">
                 <h5>Others</h5>
